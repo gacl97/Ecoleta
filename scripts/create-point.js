@@ -1,7 +1,5 @@
 //querySelector => Busca o elemento select no html com o nome requerido
 //addEventListener => Fica "escutando" qualquer evento emitido (selecionar o campo, mudar o campo, etc)
-
-
 function getUFs() {
   const ufSelect = document.querySelector('select[name=uf]');
 
@@ -29,12 +27,15 @@ function getCities(event) {
 
   const url = `https://servicodados.ibge.gov.br/api/v1/localidades/estados/${ufValue}/municipios`;
 
+  citySelect.innerHTML = "<option value>Selecione a Cidade</option>";
+  citySelect.disabled = true;
+
   fetch(url)
     .then(response => response.json())
     .then(cities => {
-      
+
       for(const city of cities) {
-        citySelect.innerHTML += `<option value="${city.id}">${city.nome}</option>`
+        citySelect.innerHTML += `<option value="${city.nome}">${city.nome}</option>`
       }
 
       citySelect.disabled = false;
@@ -42,3 +43,37 @@ function getCities(event) {
 }
 
 document.querySelector('select[name=uf]').addEventListener("change", getCities);
+
+// Itens de coleta
+
+const collectedItems = document.querySelector("input[name=items]");
+
+let selectedItems = []
+
+function handleSelectedItem(event) {
+  const itemLi = event.target;
+
+  // Adicionar ou remover uma classe com JS
+  itemLi.classList.toggle("selected"); // Funcao toggle faz a adicao e remocao da classe
+
+  const itemId = itemLi.dataset.id;
+
+  const alreadySelected = selectedItems.findIndex((item) => item === itemId);
+
+  if(alreadySelected >= 0) {
+    const filteedItems = selectedItems.filter( (item) => item != itemId);
+    selectedItems = filteedItems;
+  } else {
+    selectedItems.push(itemId);
+  }
+
+  collectedItems.value = selectedItems;
+  console.log(selectedItems)
+}
+
+const itemsToCollect = document.querySelectorAll(".items-grid li");
+
+for (const item of itemsToCollect) {
+  item.addEventListener("click", handleSelectedItem);
+}
+

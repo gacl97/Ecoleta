@@ -112,3 +112,60 @@ form button {
 form button:hover {
   background-color: #2fb86e;
 }
+
+.items-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 16px; /*Separacao dos itens*/
+}
+
+.items-grid li {
+  background: #f5f5f5;
+  list-style: none;
+
+  border: 2px solid #f5f5f5;
+  border-radius: 8px;
+
+  height: 180px;
+  padding: 32px 24px 16px;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  
+  text-align: center;
+
+  cursor: pointer;
+}
+
+.items-grid li span {
+  flex: 1;
+  display: flex;
+  align-items: center;
+
+  color: var(--title-color);
+
+  margin-top: 12px;
+}
+
+
+/*
+  Quando uma classe esta junta de outra tag, significa que estamos buscando nesse
+  caso dentro de items-grid uma li que possue a classe selected.
+  Separado tem outro significado, nesse caso estariamos "dizendo" que dentro de li
+  existe algum elemento que tem a classe selected
+*/
+.items-grid li.selected {
+  background: #e1faec;
+  border: 2px solid #34cb79;
+}
+
+/* 
+  Para evitar que no querySelector ao clicar nos filhos do conteudo li (nesse caso
+  img e span) recebem o evento de click(nesse caso).
+*/
+.items-grid li img,
+.items-grid li span {
+  pointer-events: none; 
+}
