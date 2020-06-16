@@ -68,7 +68,6 @@ function handleSelectedItem(event) {
   }
 
   collectedItems.value = selectedItems;
-  console.log(selectedItems)
 }
 
 const itemsToCollect = document.querySelectorAll(".items-grid li");
