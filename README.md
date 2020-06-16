@@ -54,7 +54,7 @@
 
 # :clipboard:	Sobre
 
-O <strong>Ecoleta</strong> é uma aplicação Web para cadastrar e encontrar pontos de coleta seletiva com objetivo de insentivar as pessoas a buscarem descartar lixos da melhor forma.
+O <strong>Ecoleta</strong> é uma aplicação Web para cadastrar e encontrar pontos de coleta seletiva com objetivo de incentivar as pessoas a buscarem descartar lixos da melhor forma.
 
 Essa aplicação foi construída na trilha <strong>Starter</strong> da <strong>Next Level Week</strong> distribuída pela [Rocketseat](https://rocketseat.com.br/).
 
